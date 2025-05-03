@@ -1,2 +1,8 @@
 Flask
 requests
+pandas
+numpy
+scikit-learn
+tensorflow
+yfinance
+flask_cors
