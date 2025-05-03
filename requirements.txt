@@ -6,3 +6,4 @@ scikit-learn
 tensorflow
 yfinance
 flask_cors
+gunicorn
