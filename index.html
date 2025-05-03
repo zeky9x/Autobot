@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dự đoán XAU/USD AI</title>
+  <script>
+    async function fetchSignal() {
+      const response = await fetch('/predict');
+      const data = await response.json();
+      if (data.error) {
+        document.getElementById('output').innerText = data.error;
+      } else {
+        document.getElementById('output').innerHTML = `
+          <strong>Tín hiệu:</strong> ${data.signal}<br>
+          <strong>Giá hiện tại:</strong> ${data.current_price}<br>
+          <strong>TP:</strong> ${data.take_profit} | <strong>SL:</strong> ${data.stop_loss}
+        `;
+      }
+    }
+    setInterval(fetchSignal, 15000);
+    window.onload = fetchSignal;
+  </script>
+</head>
+<body>
+  <h2>Dự đoán AI XAU/USD (cập nhật mỗi 15 giây)</h2>
+  <div id="output">Đang tải...</div>
+</body>
+</html>
